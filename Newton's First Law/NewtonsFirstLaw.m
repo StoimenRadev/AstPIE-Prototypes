@@ -43,11 +43,9 @@ for i = 1:length(time)
 end
 
 %display final results
-disp("Final position (m):");
-disp(x);
+fprintf("\n Simulation results \n\n")
 
-disp("Final velocity:");
-disp(v);
-
-disp("Acceleration");
-disp(a);
+fprintf("Final position: [%.3f, %.3f] m\n", x(1), x(2));
+fprintf("Final velocity: [%.3f, %.3f] m/s\n", v(1), v(2));
+fprintf("Acceleration: [%.3f, %.3f] m/s^2\n", a(1), a(2));
+fprintf("Net force: [%.3f, %.3f] N\n", Fnet(1), Fnet(2))
