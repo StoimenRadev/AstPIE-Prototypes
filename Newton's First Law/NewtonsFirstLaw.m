@@ -2,15 +2,15 @@ clear;
 clc;
 close all;
 
-mass = 5; %mass - kg
-x = [0, 0]; %initial position - m
-v = [5, 0];  %initial velocity - m/s
+mass = input("Enter mass (kg): "); %mass - kg
+x = input("Enter position [x y] (m): "); %initial position - m
+v = input("Enter velocity [vx vy] (m/s): ");  %initial velocity - m/s
 
-dt = 0.01; %time step - s
-total_time = 10; %simulation time - s
+dt = input("Enter time step (s): "); %time step - s
+total_time = input("Enter total simulation time (s): "); %simulation time - s
 
-F1 = [10, 0]; %force 1 = 10 N ->
-F2 = [-5, 0]; %force 2 = 5 N <-
+F1 = input("Enter Force 1 [Fx Fy] (N): "); %force 1 = 10 N ->
+F2 = input("Enter Force 2 [Fx Fy] (N): "); %force 2 = 5 N <-
 
 Fnet = F1 + F2; %net force
 
@@ -42,7 +42,7 @@ for i = 1:length(time)
 
 end
 
-% Display final results
+%display final results
 disp("Final position (m):");
 disp(x);
 
