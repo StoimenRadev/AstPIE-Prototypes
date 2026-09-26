@@ -15,6 +15,9 @@ F2 = input("Enter Force 2 [Fx Fy] (N): "); %force 2 = 5 N <-
 Fnet = F1 + F2; %net force
 
 time = 0:dt:total_time; %time array
+if time(end) ~= total_time
+    error("Final simulation time does not match total_time!");
+end
 
 %storing arrays
 position = zeros(length(time), 2);
