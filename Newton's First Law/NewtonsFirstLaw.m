@@ -22,8 +22,7 @@ velocity = zeros(length(time), 2);
 acceleration = zeros(length(time), 2);
 
 %simulation loop
-for i = 1:length(time)
-
+for i = 2:length(time)
 
     a = Fnet/mass; %calculate acceleration
 
@@ -43,7 +42,7 @@ for i = 1:length(time)
 end
 
 %display final results
-fprintf("\n Simulation results \n\n")
+fprintf("\nSimulation results \n\n")
 
 fprintf("Final position: [%.3f, %.3f] m\n", x(1), x(2));
 fprintf("Final velocity: [%.3f, %.3f] m/s\n", v(1), v(2));
