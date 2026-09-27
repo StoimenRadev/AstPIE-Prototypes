@@ -51,3 +51,21 @@ Improved the simulation's time handling and state storage.
 ###Purpose:
 This version improves the accuracy and consistency of the simulation's time and state handling, ensuring that each calculated state corresponds to the correct simulation time.
 
+###v1.3 — Enhanced Simulation Output
+
+Improved the Newton's First Law prototype by expanding the simulation output and explicitly tracking the initial state of the simulation.
+
+###Implemented:
+
+* Initial position and velocity tracking
+* Initial state output
+* Force 1, Force 2, and net force output
+* Separate acceleration output
+* Final position and velocity output
+* Total simulation time output
+* Number of simulation steps output
+* Initial state stored in the simulation arrays
+* Improved organization and readability of simulation results
+
+###Purpose:
+This version improves the clarity and structure of the simulation results without introducing new physics. It establishes a clearer distinction between the initial state, forces, acceleration, final state, and simulation information, preparing the prototype for visualization and further testing in later versions.
