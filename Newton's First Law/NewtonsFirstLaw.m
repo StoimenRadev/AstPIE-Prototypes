@@ -5,7 +5,7 @@ close all;
 %parameters
 mass = input("Enter mass (kg): "); %mass - kg
 x = input("Enter position [x y] (m): "); %initial position - m
-v = input("Enter velocity [vx vy] (m/s): ");  %initial velocity - m/s
+v = input("Enter velocity [vx vy] (m/s): "); %initial velocity - m/s
 
 %initial values
 x_initial = x;
@@ -14,8 +14,8 @@ v_initial = v;
 dt = input("Enter time step (s): "); %time step - s
 T = input("Enter total simulation time (s): "); %simulation time - s
 
-F1 = input("Enter Force 1 [Fx Fy] (N): "); %force 1 = 10 N ->
-F2 = input("Enter Force 2 [Fx Fy] (N): "); %force 2 = 5 N <-
+F1 = input("Enter Force 1 [Fx Fy] (N): "); %force 1
+F2 = input("Enter Force 2 [Fx Fy] (N): "); %force 2
 
 Fnet = F1 + F2; %net force
 
@@ -40,16 +40,16 @@ for i = 2:length(time)
     a = Fnet/mass; %calculate acceleration
 
     %update velocity and position
-    v_new = v + a*dt;
-    x_new = x + v_new*dt;
+    v_final = v + a*dt;
+    x_final = x + v_final*dt;
 
     %update current values
-    v = v_new;
-    x = x_new;
+    v = v_final;
+    x = x_final;
 
     %store results
-    position(i, :) = x_new;
-    velocity(i, :) = v_new;
+    position(i, :) = x_final;
+    velocity(i, :) = v_final;
     acceleration(i, :) = a;
 
 end
@@ -70,10 +70,67 @@ fprintf("\nAcceleration\n");
 fprintf("Acceleration: [%.3f, %.3f] m/s^2\n", a(1), a(2));
 
 fprintf("\nFinal state\n");
-fprintf("Final position: [%.3f, %.3f] m\n", x_new(1), x_new(2));
-fprintf("Final velocity: [%.3f, %.3f] m/s\n", v_new(1), v_new(2));
+fprintf("Final position: [%.3f, %.3f] m\n", x_final(1), x_final(2));
+fprintf("Final velocity: [%.3f, %.3f] m/s\n", v_final(1), v_final(2));
 
 fprintf("\nSimulation Information\n");
 fprintf("Total simulation time: %.3f s\n", T);
 fprintf("Simulation steps: %.0f\n", length(time) - 1);
 
+%position visualization
+plot(position(:, 1), position(:, 2));
+hold on;
+plot(x_initial(1), x_initial(2), "o"); %initial point
+plot(x_final(1), x_final(2), "o"); %terminal point
+
+%force vectors
+quiver(x_final(1), x_final(2), F1(1), F1(2), 0, 'r', 'linewidth', 1.5);%force 1
+quiver(x_final(1), x_final(2), F2(1), F2(2), 0, 'b', 'linewidth', 1.5);%force 2
+quiver(x_final(1), x_final(2), Fnet(1), Fnet(2), 0, 'g', 'linewidth', 2);%net force
+
+%force 1 label
+angle_1 = atan2(F1(2), F1(1)) * 180/pi;
+
+if angle_1 > 90 || angle_1 < -90
+    angle_1 = angle_1 + 180;
+end
+
+text(x_final(1) + F1(1)/2, x_final(2) + F1(2)/2, ...
+     "Force 1", ...
+     "Rotation", angle_1, ...
+     "HorizontalAlignment", "center", ...
+     "VerticalAlignment", "middle");
+
+
+%force 2 label
+angle_2 = atan2(F2(2), F2(1)) * 180/pi;
+
+if angle_2 > 90 || angle_2 < -90
+    angle_2 = angle_2 + 180;
+end
+
+text(x_final(1) + F2(1)/2, x_final(2) + F2(2)/2, ...
+     "Force 2", ...
+     "Rotation", angle_2, ...
+     "HorizontalAlignment", "center", ...
+     "VerticalAlignment", "middle");
+
+
+%net force label
+angle_3 = atan2(Fnet(2), Fnet(1)) * 180/pi;
+
+if angle_3 > 90 || angle_3 < -90
+    angle_3 = angle_3 + 180;
+end
+
+text(x_final(1) + Fnet(1)/2, x_final(2) + Fnet(2)/2, ...
+     "Net Force", ...
+     "Rotation", angle_3, ...
+     "HorizontalAlignment", "center", ...
+     "VerticalAlignment", "middle");
+
+grid on;
+axis equal;
+xlabel("x position (m)");
+ylabel("y position (m)");
+title("Object Trajectory");
