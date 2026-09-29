@@ -114,3 +114,27 @@ Tested and validated the Newton's First Law prototype across different physical 
 
 ##Purpose:
 This version verifies that the numerical simulation behaves correctly across a range of physical and simulation parameters. Testing confirms the implementation of force, acceleration, velocity, and position calculations and ensures that the graphical output is consistent with the underlying numerical data.
+
+### v1.6 — Core Version Complete
+
+Finalized the Newton's First Law prototype by cleaning up the implementation, performing a final numerical and physics validation, checking the visualizations, and completing the core documentation.
+
+### Implemented:
+
+* Final code cleanup and formatting
+* Removed unnecessary and repeated code
+* Improved variable naming and code readability
+* Improved comments and code organization
+* Consolidated constant acceleration calculation
+* Used semi-implicit Euler integration explicitly in the simulation
+* Added final numerical and physics validation
+* Performed a final simulation test run
+* Verified trajectory and graph visualizations
+* Confirmed that visualizations correspond to the numerical simulation results
+* Updated prototype documentation
+* Prepared the completed core prototype for version control
+* Tagged the completed core prototype as v1.6
+
+### Purpose:
+
+This version completes the core Newton's First Law prototype by consolidating the validated implementation into a clean and stable version. The code, numerical calculations, physics behavior, and visualizations have been reviewed and finalized, providing a reliable baseline for future development and expansion of the simulation.
