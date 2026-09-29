@@ -80,7 +80,7 @@ elseif angle_1 < -90
     angle_1 = angle_1 + 180;
 end
 
-text(x_final(1) + F1(1)/2, x_final(2) + F1(2)/2, "Force 1", "Rotation", angle_1, "HorizontalAlignment", "center", "VerticalAlignment", "middle");
+text(x_final(1) + F1(1)/2, x_final(2) + F1(2)/2, "\n‎\nForce 1", "Rotation", angle_1, "HorizontalAlignment", "center", "VerticalAlignment", "middle");
 
 
 %force 2 label
@@ -91,7 +91,7 @@ elseif angle_2 < -90
     angle_2 = angle_2 + 180;
 end
 
-text(x_final(1) + F2(1)/2, x_final(2) + F2(2)/2, "Force 2", "Rotation", angle_2, "HorizontalAlignment", "center", "VerticalAlignment", "middle");
+text(x_final(1) + F2(1)/2, x_final(2) + F2(2)/2, "\n‎\nForce 2", "Rotation", angle_2, "HorizontalAlignment", "center", "VerticalAlignment", "middle");
 
 
 %net force label
@@ -102,9 +102,10 @@ elseif angle_3 < -90
     angle_3 = angle_3 + 180;
 end
 
-text(x_final(1) + Fnet(1)/2, x_final(2) + Fnet(2)/2, "Net Force", "Rotation", angle_3, "HorizontalAlignment", "center", "VerticalAlignment", "middle");
+acceleration_text = sprintf("Net Force: [%.3f, %.3f] N\nAcceleration: [%.3f, %.3f] m/s^2", Fnet(1), Fnet(2), acceleration(1), acceleration(2));
+text(x_final(1) + Fnet(1)/2, x_final(2) + Fnet(2)/2, acceleration_text, "Rotation", angle_3, "HorizontalAlignment", "center", "VerticalAlignment", "middle");
 
-%final velocity label
+%velocity label
 angle_4 = atan2(v_final(2), v_final(1)) * 180/pi;
 if angle_4 > 90
     angle_4 = angle_4 - 180;
@@ -112,7 +113,7 @@ elseif angle_4 < -90
     angle_4 = angle_4 + 180;
 end
 
-velocity_text = sprintf("Final Velocity: [%.3f, %.3f] m/s", v_final(1), v_final(2));
+velocity_text = sprintf("\n‎\nFinal Velocity: [%.3f, %.3f] m/s", v_final(1), v_final(2));
 text(x_final(1) + v_final(1)/2, x_final(2) + v_final(2)/2, velocity_text, "Rotation", angle_4, "HorizontalAlignment", "center", "VerticalAlignment", "middle");
 
 grid on;
