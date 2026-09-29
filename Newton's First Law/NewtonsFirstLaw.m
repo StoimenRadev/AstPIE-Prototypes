@@ -102,7 +102,7 @@ elseif angle_3 < -90
     angle_3 = angle_3 + 180;
 end
 
-acceleration_text = sprintf("Net Force: [%.3f, %.3f] N\nAcceleration: [%.3f, %.3f] m/s^2", Fnet(1), Fnet(2), acceleration(1), acceleration(2));
+acceleration_text = sprintf("Net Force: [%.3f, %.3f] N\nAcceleration: [%.3f, %.3f] m/s^2", Fnet(1), Fnet(2), a(1), a(2));
 text(x_final(1) + Fnet(1)/2, x_final(2) + Fnet(2)/2, acceleration_text, "Rotation", angle_3, "HorizontalAlignment", "center", "VerticalAlignment", "middle");
 
 %velocity label
@@ -121,6 +121,28 @@ axis equal;
 xlabel("x position (m)");
 ylabel("y position (m)");
 title("Object Trajectory");
+
+%position vs time graph
+figure;
+plot(time, position(:, 1));
+hold on;
+plot(time, position(:, 2));
+grid on;
+xlabel("Time (s)");
+ylabel("Position (m)");
+title("Position vs. Time");
+legend("x position", "y position");
+
+%velocity vs time graph
+figure;
+plot(time, velocity(:, 1));
+hold on;
+plot(time, velocity(:, 2));
+grid on;
+xlabel("Time (s)");
+ylabel("Velocity (m/s)");
+title("Velocity vs. Time");
+legend("x velocity", "y velocity");
 
 %display final results
 fprintf("\nSimulation results \n\n");
