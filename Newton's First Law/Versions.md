@@ -40,7 +40,6 @@ This version makes the prototype interactive through the console and provides cl
 Improved the simulation's time handling and state storage.
 
 ###Implemented:
-
 * Simulation loop starts from the second time index
 * Position, velocity, and acceleration are stored using the correct time index
 * Initial state is separated from calculated states
@@ -56,7 +55,6 @@ This version improves the accuracy and consistency of the simulation's time and 
 Improved the Newton's First Law prototype by expanding the simulation output and explicitly tracking the initial state of the simulation.
 
 ###Implemented:
-
 * Initial position and velocity tracking
 * Initial state output
 * Force 1, Force 2, and net force output
@@ -75,7 +73,6 @@ This version improves the clarity and structure of the simulation results withou
 Improved the Newton's First Law prototype by adding graphical visualization of the object's motion, forces, velocity, acceleration, and simulation data.
 
 ###Implemented:
-
 * Object trajectory visualization
 * Initial and final position markers
 * Force 1, Force 2, and net force vectors
@@ -92,3 +89,28 @@ Improved the Newton's First Law prototype by adding graphical visualization of t
 
 ###Purpose:
 This version adds the first visual representation of the simulation, making the object's motion and the effects of the applied forces easier to understand. It also provides graphical representations of position and velocity over time, preparing the prototype for further visualization, testing, and interaction in later versions.
+
+###v1.5 — Testing & Validation
+
+Tested and validated the Newton's First Law prototype across different physical parameters, simulation settings, and edge cases to verify that the numerical calculations and visualizations produce consistent and physically correct results.
+
+###Implemented:
+* Tested different object masses
+* Tested different initial positions
+* Tested different initial velocities
+* Tested different force magnitudes and directions
+* Tested different simulation time steps
+* Tested different total simulation times
+* Tested balanced forces where the net force is zero
+* Verified acceleration against Newton's Second Law, a = Fnet / m
+* Verified velocity changes against expected results
+* Verified position changes against expected results
+* Tested edge cases and invalid input conditions
+* Verified that trajectory visualization matches the calculated position data
+* Verified that position vs. time graphs match the calculated position data
+* Verified that velocity vs. time graphs match the calculated velocity data
+* Verified that force and velocity vectors correspond to the numerical results
+* Confirmed that the simulation produces consistent results under different valid input conditions
+
+##Purpose:
+This version verifies that the numerical simulation behaves correctly across a range of physical and simulation parameters. Testing confirms the implementation of force, acceleration, velocity, and position calculations and ensures that the graphical output is consistent with the underlying numerical data.
