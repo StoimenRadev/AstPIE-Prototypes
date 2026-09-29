@@ -69,3 +69,26 @@ Improved the Newton's First Law prototype by expanding the simulation output and
 
 ###Purpose:
 This version improves the clarity and structure of the simulation results without introducing new physics. It establishes a clearer distinction between the initial state, forces, acceleration, final state, and simulation information, preparing the prototype for visualization and further testing in later versions.
+
+###v1.4 — Basic Visualization
+
+Improved the Newton's First Law prototype by adding graphical visualization of the object's motion, forces, velocity, acceleration, and simulation data.
+
+###Implemented:
+
+* Object trajectory visualization
+* Initial and final position markers
+* Force 1, Force 2, and net force vectors
+* Final velocity vector
+* Force and velocity vector labels
+* Net force and acceleration information
+* Initial and final speed calculation
+* Position vs. time graph
+* X and Y position components on the position graph
+* Velocity vs. time graph
+* X and Y velocity components on the velocity graph
+* Graph labels, titles, legends, and grids
+* Improved visual distinction between different vectors
+
+###Purpose:
+This version adds the first visual representation of the simulation, making the object's motion and the effects of the applied forces easier to understand. It also provides graphical representations of position and velocity over time, preparing the prototype for further visualization, testing, and interaction in later versions.
