@@ -54,12 +54,80 @@ for i = 2:length(time)
 
 end
 
+
+
+%calculating speed from the components of the velocity
+speed_initial = sqrt(v_initial(1)^2 + v_initial(2)^2);%inital speed
+speed_final = sqrt(v_final(1)^2 + v_final(2)^2);%final speed
+
+%position visualization
+plot(position(:, 1), position(:, 2));
+hold on;
+plot(x_initial(1), x_initial(2), "o"); %initial point
+plot(x_final(1), x_final(2), "o"); %terminal point
+
+%force vectors
+quiver(x_final(1), x_final(2), F1(1), F1(2), 0, 'r', 'linewidth', 1.5);%force 1
+quiver(x_final(1), x_final(2), F2(1), F2(2), 0, 'b', 'linewidth', 1.5);%force 2
+quiver(x_final(1), x_final(2), Fnet(1), Fnet(2), 0, 'g', 'linewidth', 2);%net force
+quiver(x_final(1), x_final(2), v_final(1), v_final(2), 0, 'y', 'linewidth', 2);%velocity
+
+%force 1 label
+angle_1 = atan2(F1(2), F1(1)) * 180/pi;
+if angle_1 > 90
+    angle_1 = angle_1 - 180;
+elseif angle_1 < -90
+    angle_1 = angle_1 + 180;
+end
+
+text(x_final(1) + F1(1)/2, x_final(2) + F1(2)/2, "Force 1", "Rotation", angle_1, "HorizontalAlignment", "center", "VerticalAlignment", "middle");
+
+
+%force 2 label
+angle_2 = atan2(F2(2), F2(1)) * 180/pi;
+if angle_2 > 90
+    angle_2 = angle_2 - 180;
+elseif angle_2 < -90
+    angle_2 = angle_2 + 180;
+end
+
+text(x_final(1) + F2(1)/2, x_final(2) + F2(2)/2, "Force 2", "Rotation", angle_2, "HorizontalAlignment", "center", "VerticalAlignment", "middle");
+
+
+%net force label
+angle_3 = atan2(Fnet(2), Fnet(1)) * 180/pi;
+if angle_3 > 90
+    angle_3 = angle_3 - 180;
+elseif angle_3 < -90
+    angle_3 = angle_3 + 180;
+end
+
+text(x_final(1) + Fnet(1)/2, x_final(2) + Fnet(2)/2, "Net Force", "Rotation", angle_3, "HorizontalAlignment", "center", "VerticalAlignment", "middle");
+
+%final velocity label
+angle_4 = atan2(v_final(2), v_final(1)) * 180/pi;
+if angle_4 > 90
+    angle_4 = angle_4 - 180;
+elseif angle_4 < -90
+    angle_4 = angle_4 + 180;
+end
+
+velocity_text = sprintf("Final Velocity: [%.3f, %.3f] m/s", v_final(1), v_final(2));
+text(x_final(1) + v_final(1)/2, x_final(2) + v_final(2)/2, velocity_text, "Rotation", angle_4, "HorizontalAlignment", "center", "VerticalAlignment", "middle");
+
+grid on;
+axis equal;
+xlabel("x position (m)");
+ylabel("y position (m)");
+title("Object Trajectory");
+
 %display final results
 fprintf("\nSimulation results \n\n");
 
 fprintf("Initial state\n");
 fprintf("Initial position: [%.3f, %.3f] m\n", x_initial(1), x_initial(2));
 fprintf("Initial velocity: [%.3f, %.3f] m/s\n", v_initial(1), v_initial(2));
+fprintf("Initial speed: %.3f m/s\n", speed_initial);
 
 fprintf("\nForces\n");
 fprintf("Force 1: [%.3f, %.3f] N\n", F1(1), F1(2));
@@ -72,65 +140,8 @@ fprintf("Acceleration: [%.3f, %.3f] m/s^2\n", a(1), a(2));
 fprintf("\nFinal state\n");
 fprintf("Final position: [%.3f, %.3f] m\n", x_final(1), x_final(2));
 fprintf("Final velocity: [%.3f, %.3f] m/s\n", v_final(1), v_final(2));
+fprintf("Final speed: %.3f m/s\n", speed_final);
 
 fprintf("\nSimulation Information\n");
 fprintf("Total simulation time: %.3f s\n", T);
 fprintf("Simulation steps: %.0f\n", length(time) - 1);
-
-%position visualization
-plot(position(:, 1), position(:, 2));
-hold on;
-plot(x_initial(1), x_initial(2), "o"); %initial point
-plot(x_final(1), x_final(2), "o"); %terminal point
-
-%force vectors
-quiver(x_final(1), x_final(2), F1(1), F1(2), 0, 'r', 'linewidth', 1.5);%force 1
-quiver(x_final(1), x_final(2), F2(1), F2(2), 0, 'b', 'linewidth', 1.5);%force 2
-quiver(x_final(1), x_final(2), Fnet(1), Fnet(2), 0, 'g', 'linewidth', 2);%net force
-
-%force 1 label
-angle_1 = atan2(F1(2), F1(1)) * 180/pi;
-
-if angle_1 > 90 || angle_1 < -90
-    angle_1 = angle_1 + 180;
-end
-
-text(x_final(1) + F1(1)/2, x_final(2) + F1(2)/2, ...
-     "Force 1", ...
-     "Rotation", angle_1, ...
-     "HorizontalAlignment", "center", ...
-     "VerticalAlignment", "middle");
-
-
-%force 2 label
-angle_2 = atan2(F2(2), F2(1)) * 180/pi;
-
-if angle_2 > 90 || angle_2 < -90
-    angle_2 = angle_2 + 180;
-end
-
-text(x_final(1) + F2(1)/2, x_final(2) + F2(2)/2, ...
-     "Force 2", ...
-     "Rotation", angle_2, ...
-     "HorizontalAlignment", "center", ...
-     "VerticalAlignment", "middle");
-
-
-%net force label
-angle_3 = atan2(Fnet(2), Fnet(1)) * 180/pi;
-
-if angle_3 > 90 || angle_3 < -90
-    angle_3 = angle_3 + 180;
-end
-
-text(x_final(1) + Fnet(1)/2, x_final(2) + Fnet(2)/2, ...
-     "Net Force", ...
-     "Rotation", angle_3, ...
-     "HorizontalAlignment", "center", ...
-     "VerticalAlignment", "middle");
-
-grid on;
-axis equal;
-xlabel("x position (m)");
-ylabel("y position (m)");
-title("Object Trajectory");
